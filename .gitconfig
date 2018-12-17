@@ -1,0 +1,61 @@
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    last = log -l HEAD
+    ll = log --stat
+    di = diff
+    pl = pull
+    ps = push
+    cp = cherry-pick
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    amend = commit --amend --all
+[merge]
+    summary = true
+    tool = vimdiff
+[color]
+    diff = auto
+    status = true
+    branch = auto
+    interactive = auto
+    ui = auto
+    log = true
+[color "diff"]
+    meta = yellow bold
+    commit = green bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+    newMoved = cyan
+    oldMoved = blue
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+[color "branch"]
+    current = green reverse
+    local = yellow
+    remote = red
+[color "status"]
+    added = green
+    changed = red
+    untracked = yellow
+[status]
+    submodulesummary = -1
+[mergetool "vimdiff"]
+    cmd = "vim --noplugin \"$PWD/$MERGED\" \
+          +\":split $PWD/$REMOTE\" +\":set buftype=nowrite\" \
+          +\":vertical diffsplit $PWD/$LOCAL\" +\":set buftype=nowrite\" \
+          +\":vertical diffsplit $PWD/$BASE\" +\":set buftype=nowrite\" \
+          +\":wincmd l\""
+[format]
+    numbered = auto
+[stash]
+    showPatch = true
+[core]
+    quotepath = false
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
